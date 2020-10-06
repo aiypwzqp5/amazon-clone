@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import GlobalStyle from './style/GlobalStyle';
 import { theme } from './style/theme';
 import Header from './components/Header';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/payment"></Route>
             <Route path="/">
               <Header />
+              <Home />
             </Route>
           </Switch>
         </>
