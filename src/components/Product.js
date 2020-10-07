@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Button from './Button';
+
 const StyledProduct = styled.div`
   display: flex;
   flex-direction: column;
@@ -57,7 +59,7 @@ export default function Product({ id, title, image, price, rating }) {
 
       <img src={image} alt="img" />
 
-      <button>Add to basket</button>
+      <Button width={100}>Add to basket</Button>
     </StyledProduct>
   );
 }
