@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Button from './Button';
+import actions from '../state/actions';
+import { usteStateValue, useStateValue } from '../state/StateProvider';
 
 const StyledProduct = styled.div`
   display: flex;
@@ -40,6 +42,25 @@ const StyledProductRating = styled.div`
 `;
 
 export default function Product({ id, title, image, price, rating }) {
+  const [{ basket }, dispatch] = useStateValue();
+
+  const addToBasket = () => {
+    dispatch({
+      type: actions.ADD_TO_BASKET,
+      item: {
+        id: id,
+        title: title,
+        image: image,
+        price: price,
+        rating: rating,
+      },
+    });
+
+    console.log(basket);
+  };
+
+  console.log(basket);
+
   return (
     <StyledProduct>
       <StyledProductInfo>
@@ -59,7 +80,9 @@ export default function Product({ id, title, image, price, rating }) {
 
       <img src={image} alt="img" />
 
-      <Button width={100}>Add to basket</Button>
+      <Button width={100} onClick={addToBasket}>
+        Add to basket
+      </Button>
     </StyledProduct>
   );
 }
