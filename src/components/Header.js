@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import { useStateValue } from '../state/StateProvider';
 
 const StyledHeader = styled.header`
   height: 60px;
@@ -69,6 +70,7 @@ const StyledHeaderOptionBasket = styled.div`
 `;
 
 function Header() {
+  const [{ basket }, dispatch] = useStateValue();
   return (
     <StyledHeader>
       <Link to="/">
@@ -114,7 +116,7 @@ function Header() {
           <StyledHeaderOptionBasket>
             <ShoppingBasketIcon />
             <StyledHeaderOptionLine marginLeft={10} marginRight={10}>
-              0
+              {basket?.length}
             </StyledHeaderOptionLine>
           </StyledHeaderOptionBasket>
         </Link>

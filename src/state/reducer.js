@@ -13,7 +13,16 @@ const reducer = (state, action) => {
         basket: [...state.basket, action.item],
       };
     case actions.REMOVE_FROM_BASKET:
-      return {};
+      let newBasket = [...state.basket];
+      const index = state.basket.findIndex(
+        (basketItem) => basketItem.id === action.id
+      );
+      if (index >= 0) newBasket.splice(index, 1);
+      else console.warn(`Cant remove product (id: ${action.id})`);
+      return {
+        ...state,
+        basket: newBasket,
+      };
     case actions.EMPTY_BASKET:
       return {};
     case actions.SET_USER:

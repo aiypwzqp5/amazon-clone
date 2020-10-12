@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Button from './Button';
 import actions from '../state/actions';
-import { usteStateValue, useStateValue } from '../state/StateProvider';
+import { useStateValue } from '../state/StateProvider';
 
 const StyledProduct = styled.div`
   display: flex;
@@ -55,11 +55,7 @@ export default function Product({ id, title, image, price, rating }) {
         rating: rating,
       },
     });
-
-    console.log(basket);
   };
-
-  console.log(basket);
 
   return (
     <StyledProduct>

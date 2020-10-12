@@ -6,6 +6,7 @@ import GlobalStyle from './style/GlobalStyle';
 import { theme } from './style/theme';
 import Header from './components/Header';
 import Home from './components/Home';
+import Checkout from './components/Checkout';
 
 function App() {
   return (
@@ -16,7 +17,10 @@ function App() {
           <Switch>
             <Route path="/login"></Route>
             <Route path="/orders"></Route>
-            <Route path="/checkout"></Route>
+            <Route path="/checkout">
+              <Header />
+              <Checkout />
+            </Route>
             <Route path="/payment"></Route>
             <Route path="/">
               <Header />
