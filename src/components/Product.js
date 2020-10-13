@@ -69,7 +69,7 @@ export default function Product({ id, title, image, price, rating }) {
           {Array(rating)
             .fill()
             .map((i) => (
-              <p>G</p>
+              <p>🌟</p>
             ))}
         </StyledProductRating>
       </StyledProductInfo>

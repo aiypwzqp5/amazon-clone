@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useStateValue } from '../state/StateProvider';
 import CheckoutProduct from './CheckoutProduct';
+import Subtotal from './Subtotal';
 
 const StyledCheckout = styled.div`
   display: flex;

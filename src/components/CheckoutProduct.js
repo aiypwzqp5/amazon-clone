@@ -55,17 +55,19 @@ export default function CheckoutProduct({
           <small>$</small>
           <strong>{price}</strong>
         </p>
+        <StyledCheckoutProductRating>
+          {Array(rating)
+            .fill()
+            .map((_, i) => (
+              <p>G</p>
+            ))}
+        </StyledCheckoutProductRating>
+        {!hideButton && (
+          <Button width={200} onClick={removeFromBasket}>
+            Remove from Basket
+          </Button>
+        )}
       </StyledCheckoutProductInfo>
-      <StyledCheckoutProductRating>
-        {Array(rating)
-          .fill()
-          .map((_, i) => (
-            <p>G</p>
-          ))}
-      </StyledCheckoutProductRating>
-      {!hideButton && (
-        <Button onClick={removeFromBasket}>Remove from Basket</Button>
-      )}
     </StyledCheckoutProduct>
   );
 }

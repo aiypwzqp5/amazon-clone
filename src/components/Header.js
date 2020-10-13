@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { useStateValue } from '../state/StateProvider';
+import { auth } from '../firebase';
 
 const StyledHeader = styled.header`
   height: 60px;
@@ -70,7 +71,14 @@ const StyledHeaderOptionBasket = styled.div`
 `;
 
 function Header() {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
+
+  const handleAuthenticaton = () => {
+    if (user) {
+      auth.signOut();
+    }
+  };
+
   return (
     <StyledHeader>
       <Link to="/">
@@ -83,13 +91,13 @@ function Header() {
       </StyledHeaderSearch>
 
       <StyledHeaderNav>
-        <Link to="/user">
-          <StyledHeaderOption>
+        <Link to={!user && '/login'}>
+          <StyledHeaderOption onClick={handleAuthenticaton}>
             <StyledHeaderOptionLine fontSize={10}>
-              Hello Guest
+              Hello {!user ? 'Guest' : user.email}
             </StyledHeaderOptionLine>
             <StyledHeaderOptionLine fontSize={10} fontWeight={800}>
-              Sign Out/Sign In
+              {user ? 'Sign Out' : 'Sign In'}
             </StyledHeaderOptionLine>
           </StyledHeaderOption>
         </Link>
