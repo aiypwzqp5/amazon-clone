@@ -27,7 +27,10 @@ const reducer = (state, action) => {
         basket: newBasket,
       };
     case actions.EMPTY_BASKET:
-      return {};
+      return {
+        ...state,
+        basket: [],
+      };
     case actions.SET_USER:
       return {
         ...state,
