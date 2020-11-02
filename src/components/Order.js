@@ -8,8 +8,7 @@ const StyledOrder = styled.div`
   padding: 40px;
   margin: 20px 0;
   background-color: ${({ theme }) => theme.color.white};
-  position: absolute;
-  border 1px solid ${({ theme }) => theme.color.lightGray};
+  border: 1px solid ${({ theme }) => theme.color.lightGray};
 `;
 
 const StyledOrderId = styled.p`

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Product from './Product';
+import { useStateValue } from '../state/StateProvider';
+import { db } from '../firebase';
+import actions from '../state/actions';
 
 const StyledHomeContainer = styled.div`
   display: flex;
@@ -26,60 +29,55 @@ const StyledHomeRow = styled.div`
 `;
 
 export default function Home() {
+  const [{ items }, dispatch] = useStateValue();
+
+  useEffect(() => {
+    const getData = (response) => {
+      const mappedResponse = response.docs.map((e) => e.data());
+      dispatch({
+        type: actions.ADD_ITEMS,
+        items: mappedResponse,
+      });
+    };
+    db.collection('Items').get().then(getData);
+  }, []);
+
   return (
     <StyledHomeContainer>
       <StyledHomeImage
         src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
         alt="img"
       />
+
       <StyledHomeRow>
-        <Product
-          id="12321341"
-          title="The lean startup"
-          price={29.99}
-          image="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400.jpg"
-          rating={5}
-        />
-        <Product
-          id="49538094"
-          title="Kolejny przykładowy tytuł który ma na celu dobicie  mnie
-            bo musze to pisać"
-          price={239.0}
-          rating={4}
-          image="https://images-na.ssl-images-amazon.com/images/I/81O%2BGNdkzKL._AC_5X450_.jpg"
-        />
+        {items.slice(1).map((item) => (
+          <Product
+            id={item.id}
+            title={item.title}
+            rating={item.rating}
+            image={item.image}
+          />
+        ))}
       </StyledHomeRow>
       <StyledHomeRow>
-        <Product
-          id="4903850"
-          title="Samsung jakis tam"
-          price={199.99}
-          rating={3}
-          image="https://images-na.ssl-images-amazon.com/images/I/71Swqqe7XAL._AC_SX466_.jpg"
-        />
-        <Product
-          id="4903850"
-          title="Samsung jakis tam"
-          price={199.99}
-          rating={3}
-          image="https://images-na.ssl-images-amazon.com/images/I/71Swqqe7XAL._AC_SX466_.jpg"
-        />
-        <Product
-          id="4903850"
-          title="Samsung jakis tam"
-          price={199.99}
-          rating={3}
-          image="https://images-na.ssl-images-amazon.com/images/I/71Swqqe7XAL._AC_SX466_.jpg"
-        />
+        {items.map((item) => (
+          <Product
+            id={item.id}
+            title={item.title}
+            rating={item.rating}
+            image={item.image}
+          />
+        ))}
       </StyledHomeRow>
       <StyledHomeRow>
-        <Product
-          id="4903850"
-          title="Samsung jakis tam"
-          price={199.99}
-          rating={3}
-          image="https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._AC_5X355_.jpg"
-        />
+        {items.slice(2).map((item) => (
+          <Product
+            id={item.id}
+            title={item.title}
+            rating={item.rating}
+            image={item.image}
+          />
+        ))}
       </StyledHomeRow>
     </StyledHomeContainer>
   );

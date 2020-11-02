@@ -3,6 +3,7 @@ import actions from './actions';
 export const initialState = {
   basket: [],
   user: null,
+  items: [],
 };
 
 export const getBasketTotal = (basket) =>
@@ -35,6 +36,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.user,
+      };
+    case actions.ADD_ITEMS:
+      return {
+        ...state,
+        items: action.items,
       };
     default:
       return state;
