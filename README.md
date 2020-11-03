@@ -13,8 +13,8 @@ The backend is fully copied.
 
 ## How to turn on?
 
-1: Clone repo
-2: Run this few command in the console: - npm install - npm start
+1: Clone repo.
+2: Run this few command in the console: - npm install - npm start.
 
     At this point you can add items to your basket.
 
