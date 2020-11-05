@@ -59,6 +59,7 @@ export default function Product({ id, title, image, price, rating }) {
 
   return (
     <StyledProduct>
+      {console.log(id, title, image, price, rating)}
       <StyledProductInfo>
         <p>{title}</p>
         <StyledProductPrice>
