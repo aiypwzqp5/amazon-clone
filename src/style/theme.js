@@ -10,5 +10,7 @@ export const theme = {
     brightOrange: '#f0c14b',
     brightOrange1: '#cd9042',
     black: '#111',
+    footerThemeColor: '#232f3e',
+    footerButtonColor: '#37475a',
   },
 };

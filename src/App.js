@@ -9,6 +9,7 @@ import Home from './components/Home';
 import Checkout from './components/Checkout';
 import Payment from './components/Payment';
 import Login from './components/Login';
+import Footer from './components/Footer';
 import Orders from './components/Orders';
 import { auth } from './firebase';
 import actions from './state/actions';
@@ -21,7 +22,7 @@ const promise = loadStripe(
 );
 
 function App() {
-  const [{}, dispatch] = useStateValue();
+  const [{ user, basket }, dispatch] = useStateValue();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -50,10 +51,12 @@ function App() {
             <Route path="/orders">
               <Header />
               <Orders />
+              {user ? <Footer /> : null}
             </Route>
             <Route path="/checkout">
               <Header />
               <Checkout />
+              {basket.length > 2 ? <Footer /> : null}
             </Route>
             <Route path="/payment">
               <Header />
@@ -64,6 +67,7 @@ function App() {
             <Route path="/">
               <Header />
               <Home />
+              <Footer />
             </Route>
           </Switch>
         </>
