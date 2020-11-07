@@ -4,15 +4,20 @@ import Button from './Button';
 import { Link } from 'react-router-dom';
 import Cached from '@material-ui/icons/Cached';
 
-const StyledFooter = styled.footer`
-  width: 100%;
-`;
+const StyledFooter = styled.footer``;
 const StyledFooterSection = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
-  background: ${({ theme }) => theme.color.footerThemeColor};
+  align-items: flex-start;
+  background: ${({ theme, bgColor }) =>
+    bgColor ? theme.color.footerThemeColor2 : theme.color.footerThemeColor};
   color: ${({ theme }) => theme.color.white};
-  padding: 40px;
+  justify-content: center;
+  padding: 40px 0px;
+
+  &:last-child {
+    padding-top: 0px;
+  }
 `;
 const StyledFooterChangeLang = styled.div`
   width: 100%;
@@ -21,40 +26,9 @@ const StyledFooterChangeLang = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 48px 0px;
+  padding: 38px 0px;
   color: ${({ theme }) => theme.color.white};
 `;
-const StyledLoginLogo = styled.img`
-  width: 80px;
-  margin: 14px 94px 0 0;
-`;
-const StyledFooterColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0px 54px;
-  > h3 {
-    font-weight: 700;
-    font-size: 16px;
-  }
-`;
-const StyledFooterLink = styled(Link)`
-  text-decoration: none;
-  color: ${({ theme }) => theme.color.white};
-  font-size: 13px;
-  margin: 4px 0px;
-  width: 196px;
-  :hover {
-    text-decoration: underline;
-  }
-`;
-const StyledFooterButton = styled(Button)`
-  background: ${({ theme }) => theme.color.footerButtonColor};
-  border: none;
-  color: ${({ theme }) => theme.color.white};
-  font-size: 13px;
-  cursor: pointer;
-`;
-
 const StyledFooterSpanLang = styled.span`
   height: 30px;
   padding: 3px 32px 3px 8px;
@@ -70,9 +44,58 @@ const StyledFooterSpanLang = styled.span`
     font-weight: normal;
   }
 `;
+const StyledLoginLogo = styled.img`
+  width: 80px;
+  margin: 14px 94px 0 0;
+`;
+const StyledFooterColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: ${({ margin }) => (margin ? ' 34px ' : '54px ')};
+  &:last-child {
+    margin-right: 0px;
+  }
+`;
+const StyledFooterLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme, fontColor }) =>
+    fontColor ? theme.color.footerThemeFontColor : theme.color.white};
+  font-size: ${({ fontSize }) => (fontSize ? '12px' : '13px')};
+  margin: 4px 0px;
+  width: ${({ width }) => (width ? 'null' : '196px')};
+  padding: ${({ padding }) => (padding ? '0px 8px' : null)};
+  :hover {
+    text-decoration: underline;
+  }
+  > h3 {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  > span {
+    padding: 8px 0px;
+    font-size: 11px;
+    > h4 {
+      font-weight: bold;
+      color: ${({ theme }) => theme.color.footerThemeFontColor};
+    }
+    > small {
+      color: ${({ theme }) => theme.color.footerThemeFontColor2};
+    }
+  }
+`;
+const StyledFooterButton = styled(Button)`
+  background: ${({ theme }) => theme.color.footerButtonColor};
+  border: none;
+  color: ${({ theme }) => theme.color.white};
+  font-size: 13px;
+  cursor: pointer;
+`;
 
 const StyledFooterIcon = styled(Cached)`
   margin-right: 6px;
+`;
+const StyledFooterSummary = styled.div`
+  padding: 24px 0px 0px 0px;
 `;
 
 function Footer() {
@@ -160,6 +183,161 @@ function Footer() {
           <h5>Niemcy</h5>
         </StyledFooterSpanLang>
       </StyledFooterChangeLang>
+      <StyledFooterSection bgColor>
+        <StyledFooterColumn margin>
+          <StyledFooterLink width>
+            <span>
+              <h4>Amazon Advertising</h4>
+              <small>
+                Znajdź, przyciągnij, zaangażuj <br /> klientów
+              </small>
+            </span>
+          </StyledFooterLink>
+          <StyledFooterLink width>
+            <span>
+              <h4>Magazyn książek</h4>
+              <small>
+                Ksiązki objęte darmową <br /> dostawą na całym świecie
+              </small>
+            </span>
+          </StyledFooterLink>
+          <StyledFooterLink width>
+            <span>
+              <h4>Warehouse Deals</h4>
+              <small>
+                Produkty w otwartych opakowaniach <br /> w obinżonych cenach
+              </small>
+            </span>
+          </StyledFooterLink>
+        </StyledFooterColumn>
+        <StyledFooterColumn margin>
+          <StyledFooterLink width>
+            <span>
+              <h4>Amazon Music</h4>
+              <small>
+                Miliony utworów <br /> do strumieniowania
+              </small>
+            </span>
+          </StyledFooterLink>
+          <StyledFooterLink width>
+            <span>
+              <h4>IMDb</h4>
+              <small>
+                Filmy, seriale <br /> i gwiazdy
+              </small>
+            </span>
+          </StyledFooterLink>
+          <StyledFooterLink width>
+            <span>
+              <h4>ZVAB</h4>
+              <small>
+                Centralny katalog <br />
+                książek antykwarycznych
+              </small>
+            </span>
+          </StyledFooterLink>
+        </StyledFooterColumn>
+        <StyledFooterColumn margin>
+          <StyledFooterLink width>
+            <span>
+              <h4>AbeBooks</h4>
+              <small>
+                Przedmioty unikatowe i kolekcjonerskie <br />
+                Książki
+              </small>
+            </span>
+          </StyledFooterLink>
+          <StyledFooterLink width>
+            <span>
+              <h4>Kindle Direct Publishing</h4>
+              <small>
+                Proste publikowanie <br />
+                niezależnych wydawnictw
+              </small>
+            </span>
+          </StyledFooterLink>
+          <StyledFooterLink width>
+            <span>
+              <h4>Amazon Business</h4>
+              <small>
+                Płatność na podstawie faktury. Polecenia zapłaty. <br />
+                Dla klientów biznesowych
+              </small>
+            </span>
+          </StyledFooterLink>
+        </StyledFooterColumn>
+        <StyledFooterColumn margin>
+          <StyledFooterLink width>
+            <span>
+              <h4>Amazon Web Services</h4>
+              <small>
+                Skalowalna chmura <br />
+                Usługi obliczeniowe
+              </small>
+            </span>
+          </StyledFooterLink>
+          <StyledFooterLink width>
+            <span>
+              <h4>Prime Now</h4>
+              <small>
+                Dostawa w 2 godziny <br />
+                podstawowych produktów
+              </small>
+            </span>
+          </StyledFooterLink>
+          <StyledFooterLink width>
+            <span>
+              <h4>Amazon Second Chance</h4>
+              <small>
+                Przekaż je komuś innemu, odsprzedaj, <br />
+                daj im drugie życie
+              </small>
+            </span>
+          </StyledFooterLink>
+        </StyledFooterColumn>
+        <StyledFooterColumn margin>
+          <StyledFooterLink width>
+            <span>
+              <h4>Audible</h4>
+              <small>
+                Pobieranie <br />
+                audiobooków
+              </small>
+            </span>
+          </StyledFooterLink>
+          <StyledFooterLink width>
+            <span>
+              <h4>Shopbop</h4>
+              <small>
+                Projektanci <br />
+                Marki odzieżowe
+              </small>
+            </span>
+          </StyledFooterLink>
+        </StyledFooterColumn>
+      </StyledFooterSection>
+      <StyledFooterSection bgColor>
+        <StyledFooterLink width fontSize fontColor padding>
+          Warunki użytkowania i sprzedaży
+        </StyledFooterLink>
+        <StyledFooterLink width fontSize fontColor padding>
+          Zasady ochrony prywatności
+        </StyledFooterLink>
+        <StyledFooterLink width fontSize fontColor padding>
+          Impressum
+        </StyledFooterLink>
+        <StyledFooterLink width fontSize fontColor padding>
+          Cookies
+        </StyledFooterLink>
+        <StyledFooterLink width fontSize fontColor padding>
+          Reklamy dopasowane do zainteresowań
+        </StyledFooterLink>
+        <StyledFooterLink width fontSize>
+          <span>
+            <small>© 1998-2020 Amazon.com Inc. lub sp. powiązane</small>
+          </span>
+        </StyledFooterLink>
+      </StyledFooterSection>
     </StyledFooter>
   );
 }

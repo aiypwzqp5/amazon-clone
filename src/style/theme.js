@@ -12,5 +12,8 @@ export const theme = {
     black: '#111',
     footerThemeColor: '#232f3e',
     footerButtonColor: '#37475a',
+    footerThemeColor2: '#131a22',
+    footerThemeFontColor: '#DDD',
+    footerThemeFontColor2: '#999',
   },
 };
