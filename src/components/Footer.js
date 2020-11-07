@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 import { Link } from 'react-router-dom';
@@ -17,31 +17,6 @@ const StyledFooterSection = styled.div`
 
   &:last-child {
     padding-top: 0px;
-  }
-`;
-const StyledFooterChangeLang = styled.div`
-  width: 100%;
-  background: ${({ theme }) => theme.color.footerThemeColor};
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 38px 0px;
-  color: ${({ theme }) => theme.color.white};
-`;
-const StyledFooterSpanLang = styled.span`
-  height: 30px;
-  padding: 3px 32px 3px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 5px;
-  border-radius: 5px;
-  text-align: center;
-  > h5 {
-    font-size: 14px;
-    font-weight: normal;
   }
 `;
 const StyledLoginLogo = styled.img`
@@ -90,18 +65,123 @@ const StyledFooterButton = styled(Button)`
   font-size: 13px;
   cursor: pointer;
 `;
-
+const StyledFooterChangeLang = styled.div`
+  width: 100%;
+  background: ${({ theme }) => theme.color.footerThemeColor};
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 38px 0px;
+  color: ${({ theme }) => theme.color.white};
+  transition: all 250ms;
+`;
+const StyledFooterSpanLang = styled.span`
+  height: 30px;
+  padding: 3px 32px 3px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  > h5 {
+    font-size: 14px;
+    font-weight: normal;
+  }
+`;
+const StyledFooterSwitchLang = styled.div`
+  width: 600px;
+  height: 300px;
+  background: ${({ theme }) => theme.color.white};
+  color: ${({ theme }) => theme.color.langFontColor};
+  position: absolute;
+  z-index: 200;
+  animation-name: showBox;
+  animation-duration: 750ms;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.color.langBorderColor};
+  > h3 {
+    border-radius: 8px 8px 0 0;
+    min-height: 56px;
+    display: block;
+    font-size: 18px;
+    line-height: 3em;
+    background-color: ${({ theme }) => theme.color.langPColor};
+    border-bottom: 1px solid ${({ theme }) => theme.color.langBorderColor};
+    text-indent: 40px;
+  }
+  > div {
+    display: flex;
+    &:last-child {
+      justify-content: flex-end;
+    }
+    > div {
+      padding: 20px;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      > h3 {
+        font-weight: 700;
+        font-size: 14px;
+        padding-bottom: 8px;
+      }
+      > select {
+        padding: 14px;
+      }
+      > div {
+        > p {
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 20px;
+        }
+        > h5 {
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+  @keyframes showBox {
+    0% {
+      opacity: 0;
+      pointer-events: none;
+    }
+    100% {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+`;
 const StyledFooterIcon = styled(Cached)`
   margin-right: 6px;
 `;
-const StyledFooterSummary = styled.div`
-  padding: 24px 0px 0px 0px;
+
+const StyledFooterLangButton = styled(Button)`
+  width: auto;
+  cursor: pointer;
+  padding: 8px 11px;
+  margin-left: 2px;
+  border: 1px solid ${({ theme }) => theme.color.footerThemeFontColor2};
+  &:last-child {
+    margin-right: 18px;
+  }
 `;
 
 function Footer() {
+  const [lang, setLang] = useState(false);
+
   return (
     <StyledFooter>
-      <StyledFooterButton height={50}>Powrót do góry</StyledFooterButton>
+      <StyledFooterButton height={50} onClick={() => window.scrollTo(0, 0)}>
+        Powrót do góry
+      </StyledFooterButton>
       <StyledFooterSection>
         <StyledFooterColumn>
           <h3>O nas</h3>
@@ -174,10 +254,59 @@ function Footer() {
       </StyledFooterSection>
       <StyledFooterChangeLang>
         <StyledLoginLogo src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png" />
-        <StyledFooterSpanLang>
+        <StyledFooterSpanLang onClick={(e) => setLang(!lang)}>
           <StyledFooterIcon />
           <h5>Polski</h5>
         </StyledFooterSpanLang>
+        {lang ? (
+          <StyledFooterSwitchLang>
+            <h3>Język</h3>
+            <div>
+              <div>
+                <h3>Wybierz preferowany język:</h3>
+
+                <select>
+                  <option>Polski</option>
+                  <option>English</option>
+                  <option>Nederlands</option>
+                  <option>Turkey</option>
+                  <option>Cestina</option>
+                </select>
+              </div>
+              <div>
+                <div>
+                  <p>Tłumaczenie</p>
+                  <h5>
+                    Przetłumaczymy najważniejsze informacje dotyczące
+                    wyszukiwania, zakupów i komunikacji.
+                  </h5>
+                </div>
+                <div>
+                  <p>Dodatkowe języki</p>
+                  <h5>
+                    Inne języki są dostępne na stronach Amazon w innych
+                    lokalizacjach.
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div>
+              <StyledFooterLangButton
+                borderRadius={4}
+                noBgColor
+                onClick={(e) => setLang(!lang)}
+              >
+                Anuluj
+              </StyledFooterLangButton>
+              <StyledFooterLangButton
+                borderRadius={4}
+                onClick={(e) => setLang(!lang)}
+              >
+                Zapisz zmiany
+              </StyledFooterLangButton>
+            </div>
+          </StyledFooterSwitchLang>
+        ) : null}
         <StyledFooterSpanLang>
           <StyledFooterIcon />
           <h5>Niemcy</h5>
