@@ -27,7 +27,7 @@ const StyledCheckoutTitle = styled.h2`
 `;
 
 export default function Checkout() {
-  const [{ basket, user }, dispatch] = useStateValue();
+  const [{ basket }] = useStateValue();
   return (
     <StyledCheckout>
       <div>
@@ -40,6 +40,7 @@ export default function Checkout() {
           <StyledCheckoutTitle>Your shopping Basket</StyledCheckoutTitle>
           {basket?.map((item) => (
             <CheckoutProduct
+              // key={i}
               id={item.id}
               title={item.title}
               image={item.image}

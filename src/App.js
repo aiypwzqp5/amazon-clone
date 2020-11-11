@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -23,8 +23,10 @@ const promise = loadStripe(
 
 function App() {
   const [{ user, basket }, dispatch] = useStateValue();
+  // const [didMount, setDidMount] = useState(false);
 
   useEffect(() => {
+    // setDidMount(true);
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch({
@@ -38,7 +40,9 @@ function App() {
         });
       }
     });
+    // return () => setDidMount(false);
   }, []);
+
   return (
     <Router>
       <ThemeProvider theme={theme}>

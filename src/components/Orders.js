@@ -13,7 +13,7 @@ const StyledOrders = styled.div`
 `;
 
 export default function Orders() {
-  const [{ basket, user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
 
   const [orders, setOrders] = useState([]);
 
@@ -42,7 +42,7 @@ export default function Orders() {
 
       <div>
         {orders?.map((order) => (
-          <Order order={order} />
+          <Order key={order.id} order={order} />
         ))}
       </div>
     </StyledOrders>

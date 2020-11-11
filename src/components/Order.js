@@ -32,6 +32,7 @@ export default function Order({ order }) {
       </StyledOrderId>
       {order.data.basket?.map((item) => (
         <CheckoutProduct
+          // key={i}
           id={item.id}
           title={item.title}
           image={item.image}

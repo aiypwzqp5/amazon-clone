@@ -55,6 +55,7 @@ export default function Home() {
       <StyledHomeRow>
         {items.slice(1).map((item) => (
           <Product
+            key={item.Id}
             id={item.Id}
             title={item.title}
             rating={item.rating}
@@ -66,6 +67,7 @@ export default function Home() {
       <StyledHomeRow>
         {items.map((item) => (
           <Product
+            key={item.Id}
             id={item.Id}
             title={item.title}
             rating={item.rating}
@@ -77,6 +79,7 @@ export default function Home() {
       <StyledHomeRow>
         {items.slice(2).map((item) => (
           <Product
+            key={item.Id}
             id={item.Id}
             title={item.title}
             rating={item.rating}

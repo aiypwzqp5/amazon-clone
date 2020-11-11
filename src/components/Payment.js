@@ -139,6 +139,7 @@ export default function Payment() {
           <StyledPaymentItems>
             {basket.map((item) => (
               <CheckoutProduct
+                // key={i}
                 id={item.id}
                 title={item.title}
                 image={item.image}
