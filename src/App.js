@@ -51,12 +51,12 @@ function App() {
             <Route path="/orders">
               <Header />
               <Orders />
-              {user ? <Footer /> : null}
+              <Footer />
             </Route>
             <Route path="/checkout">
               <Header />
               <Checkout />
-              {basket.length > 2 ? <Footer /> : null}
+              <Footer />
             </Route>
             <Route path="/payment">
               <Header />

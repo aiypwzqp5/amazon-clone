@@ -26,6 +26,10 @@ const StyledHomeRow = styled.div`
   z-index: 1;
   margin-left: 5px;
   margin-right: 5px;
+
+  @media (max-width: ${({ theme }) => theme.device.md}) {
+    flex-direction: column;
+  }
 `;
 
 export default function Home() {

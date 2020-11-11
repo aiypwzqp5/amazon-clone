@@ -26,6 +26,9 @@ const StyledProduct = styled.div`
     object-fit: contain;
     margin-bottom: 15px;
   }
+  @media (max-width: ${({ theme }) => theme.device.md}) {
+    width: auto;
+  }
 `;
 
 const StyledProductInfo = styled.div`
@@ -59,7 +62,6 @@ export default function Product({ id, title, image, price, rating }) {
 
   return (
     <StyledProduct>
-      {console.log(id, title, image, price, rating)}
       <StyledProductInfo>
         <p>{title}</p>
         <StyledProductPrice>

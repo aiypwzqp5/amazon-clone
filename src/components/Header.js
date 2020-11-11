@@ -15,6 +15,12 @@ const StyledHeader = styled.header`
   position: sticky;
   top: 0;
   z-index: 100;
+  @media (max-width: ${({ theme }) => theme.device.xs}) {
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 18px;
+    position: relative;
+  }
 `;
 
 const StyledHeaderImg = styled.img`
@@ -46,6 +52,11 @@ const StyledSearchIcon = styled(SearchIcon)`
 const StyledHeaderNav = styled.nav`
   display: flex;
   justify-content: space-evenly;
+  @media (max-width: ${({ theme }) => theme.device.xs}) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const StyledHeaderOption = styled.div`
@@ -54,6 +65,10 @@ const StyledHeaderOption = styled.div`
   margin-left: 10px;
   margin-right: 10px;
   color: ${({ theme }) => theme.color.white};
+  @media (max-width: ${({ theme }) => theme.device.xs}) {
+    padding: 8px 0;
+    text-align: center;
+  }
 `;
 
 const StyledHeaderOptionLine = styled.span`

@@ -14,7 +14,22 @@ const StyledFooterSection = styled.div`
   color: ${({ theme }) => theme.color.white};
   justify-content: center;
   padding: 40px 0px;
-
+  @media (max-width: ${({ theme }) => theme.device.xs}) {
+    flex-direction: column;
+    align-items: center;
+  }
+  > div {
+    display: flex;
+    @media (max-width: ${({ theme }) => theme.device.lg}) {
+      flex-direction: column;
+    }
+    &:last-child {
+      margin-left: 80px;
+      @media (max-width: ${({ theme }) => theme.device.md}) {
+        margin-left: 0;
+      }
+    }
+  }
   &:last-child {
     padding-top: 0px;
   }
@@ -22,6 +37,9 @@ const StyledFooterSection = styled.div`
 const StyledLoginLogo = styled.img`
   width: 80px;
   margin: 14px 94px 0 0;
+  @media (max-width: ${({ theme }) => theme.device.xs}) {
+    margin: 14px 7px 0 0;
+  }
 `;
 const StyledFooterColumn = styled.div`
   display: flex;
@@ -29,6 +47,15 @@ const StyledFooterColumn = styled.div`
   margin-right: ${({ margin }) => (margin ? ' 34px ' : '54px ')};
   &:last-child {
     margin-right: 0px;
+  }
+  @media (max-width: ${({ theme }) => theme.device.lg}) {
+    padding-top: 24px;
+    margin-right: 0;
+    margin-left: 34px;
+  }
+  @media (max-width: ${({ theme }) => theme.device.xs}) {
+    margin-left: 0px;
+    text-align: center;
   }
 `;
 const StyledFooterLink = styled(Link)`
@@ -57,6 +84,9 @@ const StyledFooterLink = styled(Link)`
       color: ${({ theme }) => theme.color.footerThemeFontColor2};
     }
   }
+  @media (max-width: ${({ theme }) => theme.device.xs}) {
+    width: auto;
+  }
 `;
 const StyledFooterButton = styled(Button)`
   background: ${({ theme }) => theme.color.footerButtonColor};
@@ -78,7 +108,7 @@ const StyledFooterChangeLang = styled.div`
 `;
 const StyledFooterSpanLang = styled.span`
   height: 30px;
-  padding: 3px 32px 3px 8px;
+  padding: 3px 16px;
   border: 1px solid rgba(255, 255, 255, 0.6);
   display: flex;
   justify-content: center;
@@ -106,6 +136,12 @@ const StyledFooterSwitchLang = styled.div`
   flex-direction: column;
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.color.langBorderColor};
+  @media (max-width: ${({ theme }) => theme.device.lg}) {
+    width: 300px;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+  }
   > h3 {
     border-radius: 8px 8px 0 0;
     min-height: 56px;
@@ -115,9 +151,15 @@ const StyledFooterSwitchLang = styled.div`
     background-color: ${({ theme }) => theme.color.langPColor};
     border-bottom: 1px solid ${({ theme }) => theme.color.langBorderColor};
     text-indent: 40px;
+    @media (max-width: ${({ theme }) => theme.device.lg}) {
+      width: 100%;
+    }
   }
   > div {
     display: flex;
+    @media (max-width: ${({ theme }) => theme.device.lg}) {
+      flex-direction: column;
+    }
     &:last-child {
       justify-content: flex-end;
     }
@@ -126,6 +168,10 @@ const StyledFooterSwitchLang = styled.div`
       width: 50%;
       display: flex;
       flex-direction: column;
+      @media (max-width: ${({ theme }) => theme.device.lg}) {
+        width: auto;
+        justify-content: center;
+      }
       > h3 {
         font-weight: 700;
         font-size: 14px;
@@ -172,91 +218,117 @@ const StyledFooterLangButton = styled(Button)`
   &:last-child {
     margin-right: 18px;
   }
+  @media (max-width: ${({ theme }) => theme.device.lg}) {
+    width: 150px;
+    &:last-child {
+      margin-bottom: 24px;
+    }
+  }
 `;
 
 function Footer() {
   const [lang, setLang] = useState(false);
+  const [select, setSelect] = useState('Polski');
+  const [newSelect, setNewSelect] = useState(select);
 
+  const changeSelectLang = (event) => {
+    setNewSelect(event);
+  };
+  const changeLang = () => {
+    setLang(!lang);
+    setSelect(newSelect);
+  };
   return (
     <StyledFooter>
       <StyledFooterButton height={50} onClick={() => window.scrollTo(0, 0)}>
         Powrót do góry
       </StyledFooterButton>
       <StyledFooterSection>
-        <StyledFooterColumn>
-          <h3>O nas</h3>
-          <StyledFooterLink to="#">Praca</StyledFooterLink>
-          <StyledFooterLink to="#">Informacje prasowe</StyledFooterLink>
-          <StyledFooterLink to="#">O nas</StyledFooterLink>
-          <StyledFooterLink to="#">Blog</StyledFooterLink>
-          <StyledFooterLink to="#">Zrównoważony rozwój</StyledFooterLink>
-          <StyledFooterLink to="#">Amazon Logistikblog</StyledFooterLink>
-          <StyledFooterLink to="#">Impressum</StyledFooterLink>
-        </StyledFooterColumn>
-        <StyledFooterColumn>
-          <h3>Zarabiaj z nami</h3>
-          <StyledFooterLink to="#">Sprzedawaj na Amazon</StyledFooterLink>
-          <StyledFooterLink to="#">
-            Sprzedawaj pod marką własną
-          </StyledFooterLink>
-          <StyledFooterLink to="#">
-            Sprzedawaj na Amazon Business
-          </StyledFooterLink>
-          <StyledFooterLink to="#">
-            Sprzedawaj na Amazon Handmade
-          </StyledFooterLink>
-          <StyledFooterLink to="#">Program partnerski</StyledFooterLink>
-          <StyledFooterLink to="#">Realizacja przez Amazon</StyledFooterLink>
-          <StyledFooterLink to="#">Sprzedawaj w ramach Prime</StyledFooterLink>
-          <StyledFooterLink to="#">Zareklamuj swoje produkty</StyledFooterLink>
-          <StyledFooterLink to="#">
-            Wydawaj z nami niezależne publikacje
-          </StyledFooterLink>
-          <StyledFooterLink to="#">Amazon Pay</StyledFooterLink>
-          <StyledFooterLink to="#">Hostowanie Amazon Hub</StyledFooterLink>
-        </StyledFooterColumn>
-        <StyledFooterColumn>
-          <h3>Metody płatności Amazon</h3>
-          <StyledFooterLink to="#">
-            Karta Amazon.de Visa (usługa dostępna obecnie w Niemczech i Austrii)
-          </StyledFooterLink>
-          <StyledFooterLink to="#">Zakupy za punkty</StyledFooterLink>
-          <StyledFooterLink to="#">Karty kredytowe</StyledFooterLink>
-          <StyledFooterLink to="#">Karty podarunkowe</StyledFooterLink>
-          <StyledFooterLink to="#">
-            Płatność na podstawie faktury (usługa dostępna obecnie w Niemczech i
-            Austrii)
-          </StyledFooterLink>
-          <StyledFooterLink to="#">Amazon Currency Converter</StyledFooterLink>
-          <StyledFooterLink to="#">Doładuj konto Amazon</StyledFooterLink>
-          <StyledFooterLink to="#">Doładowanie w sklepie</StyledFooterLink>
-        </StyledFooterColumn>
-        <StyledFooterColumn>
-          <h3>Potrzebujesz pomocy?</h3>
-          <StyledFooterLink to="#">Amazon i COVID-19</StyledFooterLink>
-          <StyledFooterLink to="#">
-            Śledź przesyłki lub wyświetl zamówienia
-          </StyledFooterLink>
-          <StyledFooterLink to="#">Koszty i zasady dostaw</StyledFooterLink>
-          <StyledFooterLink to="#">Amazon Prime</StyledFooterLink>
-          <StyledFooterLink to="#">Zwroty i wymiana</StyledFooterLink>
-          <StyledFooterLink to="#">
-            Recykling (włącznie z utylizacją sprzętu elektrycznego i
-            elektronicznego)
-          </StyledFooterLink>
-          <StyledFooterLink to="#">
-            Zarządzanie zawartością i urządzeniami
-          </StyledFooterLink>
-          <StyledFooterLink to="#">Aplikacja Amazon</StyledFooterLink>
-          <StyledFooterLink to="#">Amazon Assistant</StyledFooterLink>
-          <StyledFooterLink to="#">Obsługa klienta</StyledFooterLink>
-        </StyledFooterColumn>
+        <div>
+          <StyledFooterColumn>
+            <h3>O nas</h3>
+            <StyledFooterLink to="#">Praca</StyledFooterLink>
+            <StyledFooterLink to="#">Informacje prasowe</StyledFooterLink>
+            <StyledFooterLink to="#">O nas</StyledFooterLink>
+            <StyledFooterLink to="#">Blog</StyledFooterLink>
+            <StyledFooterLink to="#">Zrównoważony rozwój</StyledFooterLink>
+            <StyledFooterLink to="#">Amazon Logistikblog</StyledFooterLink>
+            <StyledFooterLink to="#">Impressum</StyledFooterLink>
+          </StyledFooterColumn>
+          <StyledFooterColumn>
+            <h3>Zarabiaj z nami</h3>
+            <StyledFooterLink to="#">Sprzedawaj na Amazon</StyledFooterLink>
+            <StyledFooterLink to="#">
+              Sprzedawaj pod marką własną
+            </StyledFooterLink>
+            <StyledFooterLink to="#">
+              Sprzedawaj na Amazon Business
+            </StyledFooterLink>
+            <StyledFooterLink to="#">
+              Sprzedawaj na Amazon Handmade
+            </StyledFooterLink>
+            <StyledFooterLink to="#">Program partnerski</StyledFooterLink>
+            <StyledFooterLink to="#">Realizacja przez Amazon</StyledFooterLink>
+            <StyledFooterLink to="#">
+              Sprzedawaj w ramach Prime
+            </StyledFooterLink>
+            <StyledFooterLink to="#">
+              Zareklamuj swoje produkty
+            </StyledFooterLink>
+            <StyledFooterLink to="#">
+              Wydawaj z nami niezależne publikacje
+            </StyledFooterLink>
+            <StyledFooterLink to="#">Amazon Pay</StyledFooterLink>
+            <StyledFooterLink to="#">Hostowanie Amazon Hub</StyledFooterLink>
+          </StyledFooterColumn>
+        </div>
+        <div>
+          <StyledFooterColumn>
+            <h3>Metody płatności Amazon</h3>
+            <StyledFooterLink to="#">
+              Karta Amazon.de Visa (usługa dostępna obecnie w Niemczech i
+              Austrii)
+            </StyledFooterLink>
+            <StyledFooterLink to="#">Zakupy za punkty</StyledFooterLink>
+            <StyledFooterLink to="#">Karty kredytowe</StyledFooterLink>
+            <StyledFooterLink to="#">Karty podarunkowe</StyledFooterLink>
+            <StyledFooterLink to="#">
+              Płatność na podstawie faktury (usługa dostępna obecnie w Niemczech
+              i Austrii)
+            </StyledFooterLink>
+            <StyledFooterLink to="#">
+              Amazon Currency Converter
+            </StyledFooterLink>
+            <StyledFooterLink to="#">Doładuj konto Amazon</StyledFooterLink>
+            <StyledFooterLink to="#">Doładowanie w sklepie</StyledFooterLink>
+          </StyledFooterColumn>
+          <StyledFooterColumn>
+            <h3>Potrzebujesz pomocy?</h3>
+            <StyledFooterLink to="#">Amazon i COVID-19</StyledFooterLink>
+            <StyledFooterLink to="#">
+              Śledź przesyłki lub wyświetl zamówienia
+            </StyledFooterLink>
+            <StyledFooterLink to="#">Koszty i zasady dostaw</StyledFooterLink>
+            <StyledFooterLink to="#">Amazon Prime</StyledFooterLink>
+            <StyledFooterLink to="#">Zwroty i wymiana</StyledFooterLink>
+            <StyledFooterLink to="#">
+              Recykling (włącznie z utylizacją sprzętu elektrycznego i
+              elektronicznego)
+            </StyledFooterLink>
+            <StyledFooterLink to="#">
+              Zarządzanie zawartością i urządzeniami
+            </StyledFooterLink>
+            <StyledFooterLink to="#">Aplikacja Amazon</StyledFooterLink>
+            <StyledFooterLink to="#">Amazon Assistant</StyledFooterLink>
+            <StyledFooterLink to="#">Obsługa klienta</StyledFooterLink>
+          </StyledFooterColumn>
+        </div>
       </StyledFooterSection>
       <StyledFooterChangeLang>
         <StyledLoginLogo src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png" />
         <StyledFooterSpanLang onClick={(e) => setLang(!lang)}>
           <StyledFooterIcon />
-          <h5>Polski</h5>
+          <h5>{select}</h5>
         </StyledFooterSpanLang>
         {lang ? (
           <StyledFooterSwitchLang>
@@ -265,12 +337,12 @@ function Footer() {
               <div>
                 <h3>Wybierz preferowany język:</h3>
 
-                <select>
-                  <option>Polski</option>
-                  <option>English</option>
-                  <option>Nederlands</option>
-                  <option>Turkey</option>
-                  <option>Cestina</option>
+                <select onChange={(e) => changeSelectLang(e.target.value)}>
+                  <option value="Polski">Polski</option>
+                  <option value="English">English</option>
+                  <option value="Nederlands">Nederlands</option>
+                  <option value="Turkey">Turkey</option>
+                  <option value="Cestina">Cestina</option>
                 </select>
               </div>
               <div>
@@ -298,18 +370,14 @@ function Footer() {
               >
                 Anuluj
               </StyledFooterLangButton>
-              <StyledFooterLangButton
-                borderRadius={4}
-                onClick={(e) => setLang(!lang)}
-              >
+              <StyledFooterLangButton borderRadius={4} onClick={changeLang}>
                 Zapisz zmiany
               </StyledFooterLangButton>
             </div>
           </StyledFooterSwitchLang>
         ) : null}
         <StyledFooterSpanLang>
-          <StyledFooterIcon />
-          <h5>Niemcy</h5>
+          <h5>Aktualnie: {select}</h5>
         </StyledFooterSpanLang>
       </StyledFooterChangeLang>
       <StyledFooterSection bgColor>

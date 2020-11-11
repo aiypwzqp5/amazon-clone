@@ -9,6 +9,10 @@ const StyledCheckout = styled.div`
   padding: 20px;
   background-color: ${({ theme }) => theme.color.white};
   height: max-content;
+  @media (max-width: ${({ theme }) => theme.device.md}) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const StyledCheckoutImg = styled.img`

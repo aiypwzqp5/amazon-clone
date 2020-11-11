@@ -19,4 +19,10 @@ export const theme = {
     langBorderColor: '#D5D9D9',
     langFontColor: '#0F1111',
   },
+  device: {
+    xs: '576px',
+    md: '768px',
+    lg: '992px',
+    ld: '1200px',
+  },
 };
