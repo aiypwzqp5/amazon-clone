@@ -106,7 +106,7 @@ function Header() {
       </StyledHeaderSearch>
 
       <StyledHeaderNav>
-        <Link to={!user && '/login'}>
+        <Link to={(!user && '/login') || ''}>
           <StyledHeaderOption onClick={handleAuthenticaton}>
             <StyledHeaderOptionLine fontSize={10}>
               Hello {!user ? 'Guest' : user.email}

@@ -45,6 +45,7 @@ const StyledFooterColumn = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: ${({ margin }) => (margin ? ' 34px ' : '54px ')};
+
   &:last-child {
     margin-right: 0px;
   }
@@ -60,12 +61,12 @@ const StyledFooterColumn = styled.div`
 `;
 const StyledFooterLink = styled(Link)`
   text-decoration: none;
-  color: ${({ theme, fontcolor }) =>
-    fontcolor ? theme.color.footerThemeFontColor : theme.color.white};
-  font-size: ${({ fontSize }) => (fontSize ? '12px' : '13px')};
+  color: ${({ theme, hasfontcolor }) =>
+    hasfontcolor ? theme.color.footerThemeFontColor : theme.color.white};
+  font-size: ${({ hasfontsize }) => (hasfontsize ? '12px' : '13px')};
   margin: 4px 0px;
-  width: ${({ width }) => (width ? 'null' : '196px')};
-  padding: ${({ padding }) => (padding ? '0px 8px' : null)};
+  width: ${({ haswidth }) => (haswidth ? 'null' : '196px')};
+  padding: ${({ haspadding }) => (haspadding ? '0px 8px' : null)};
   :hover {
     text-decoration: underline;
   }
@@ -382,7 +383,7 @@ function Footer() {
       </StyledFooterChangeLang>
       <StyledFooterSection bgColor={true}>
         <StyledFooterColumn margin={true}>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>Amazon Advertising</h4>
               <small>
@@ -390,7 +391,7 @@ function Footer() {
               </small>
             </span>
           </StyledFooterLink>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>Magazyn książek</h4>
               <small>
@@ -398,7 +399,7 @@ function Footer() {
               </small>
             </span>
           </StyledFooterLink>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>Warehouse Deals</h4>
               <small>
@@ -408,7 +409,7 @@ function Footer() {
           </StyledFooterLink>
         </StyledFooterColumn>
         <StyledFooterColumn margin={true}>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>Amazon Music</h4>
               <small>
@@ -416,7 +417,7 @@ function Footer() {
               </small>
             </span>
           </StyledFooterLink>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>IMDb</h4>
               <small>
@@ -424,7 +425,7 @@ function Footer() {
               </small>
             </span>
           </StyledFooterLink>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>ZVAB</h4>
               <small>
@@ -435,7 +436,7 @@ function Footer() {
           </StyledFooterLink>
         </StyledFooterColumn>
         <StyledFooterColumn margin={true}>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>AbeBooks</h4>
               <small>
@@ -444,7 +445,7 @@ function Footer() {
               </small>
             </span>
           </StyledFooterLink>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>Kindle Direct Publishing</h4>
               <small>
@@ -453,7 +454,7 @@ function Footer() {
               </small>
             </span>
           </StyledFooterLink>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>Amazon Business</h4>
               <small>
@@ -464,7 +465,7 @@ function Footer() {
           </StyledFooterLink>
         </StyledFooterColumn>
         <StyledFooterColumn margin={true}>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>Amazon Web Services</h4>
               <small>
@@ -473,7 +474,7 @@ function Footer() {
               </small>
             </span>
           </StyledFooterLink>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>Prime Now</h4>
               <small>
@@ -482,7 +483,7 @@ function Footer() {
               </small>
             </span>
           </StyledFooterLink>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>Amazon Second Chance</h4>
               <small>
@@ -493,7 +494,7 @@ function Footer() {
           </StyledFooterLink>
         </StyledFooterColumn>
         <StyledFooterColumn margin={true}>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>Audible</h4>
               <small>
@@ -502,7 +503,7 @@ function Footer() {
               </small>
             </span>
           </StyledFooterLink>
-          <StyledFooterLink to="#" width={true}>
+          <StyledFooterLink to="#" haswidth={1}>
             <span>
               <h4>Shopbop</h4>
               <small>
@@ -516,50 +517,50 @@ function Footer() {
       <StyledFooterSection bgColor={true}>
         <StyledFooterLink
           to="#"
-          width={true}
-          fontSize={true}
-          fontcolor={true}
-          padding={true}
+          haswidth={1}
+          hasfontsize={1}
+          hasfontcolor={1}
+          haspadding={1}
         >
           Warunki użytkowania i sprzedaży
         </StyledFooterLink>
         <StyledFooterLink
           to="#"
-          width={true}
-          fontSize={true}
-          fontcolor={true}
-          padding={true}
+          haswidth={1}
+          hasfontsize={1}
+          hasfontcolor={1}
+          haspadding={1}
         >
           Zasady ochrony prywatności
         </StyledFooterLink>
         <StyledFooterLink
           to="#"
-          width={true}
-          fontSize={true}
-          fontcolor={true}
-          padding={true}
+          haswidth={1}
+          hasfontsize={1}
+          hasfontcolor={1}
+          haspadding={1}
         >
           Impressum
         </StyledFooterLink>
         <StyledFooterLink
           to="#"
-          width={true}
-          fontSize={true}
-          fontcolor={true}
-          padding={true}
+          haswidth={1}
+          hasfontsize={1}
+          hasfontcolor={1}
+          haspadding={1}
         >
           Cookies
         </StyledFooterLink>
         <StyledFooterLink
           to="#"
-          width={true}
-          fontSize={true}
-          fontcolor={true}
-          padding={true}
+          haswidth={1}
+          hasfontsize={1}
+          hasfontcolor={1}
+          haspadding={1}
         >
           Reklamy dopasowane do zainteresowań
         </StyledFooterLink>
-        <StyledFooterLink to="#" width={true} fontSize={true}>
+        <StyledFooterLink to="#" haswidth={1} hasfontsize={1}>
           <span>
             <small>© 1998-2020 Amazon.com Inc. lub sp. powiązane</small>
           </span>
