@@ -44,6 +44,7 @@ export default function Home() {
       });
     };
     db.collection('Items').get().then(getData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

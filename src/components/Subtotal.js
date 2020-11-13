@@ -30,7 +30,7 @@ const StyledGift = styled.small`
 
 export default function Subtotal() {
   const history = useHistory();
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket }] = useStateValue();
 
   return (
     <StyledSubtotal>

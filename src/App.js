@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -22,12 +22,10 @@ const promise = loadStripe(
 );
 
 function App() {
-  const [{ user, basket }, dispatch] = useStateValue();
-  // const [didMount, setDidMount] = useState(false);
+  const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
-    // setDidMount(true);
-    auth.onAuthStateChanged((authUser) => {
+    return auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch({
           type: actions.SET_USER,
@@ -40,7 +38,7 @@ function App() {
         });
       }
     });
-    // return () => setDidMount(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

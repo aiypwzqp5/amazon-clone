@@ -9,6 +9,9 @@ const StyledOrder = styled.div`
   margin: 20px 0;
   background-color: ${({ theme }) => theme.color.white};
   border: 1px solid ${({ theme }) => theme.color.lightGray};
+  @media (max-width: ${({ theme }) => theme.device.md}) {
+    padding: 20px;
+  }
 `;
 
 const StyledOrderId = styled.p`
@@ -20,6 +23,9 @@ const StyledOrderId = styled.p`
 const StyledOrderTotal = styled.h3`
   font-weight: 500;
   text-align: center;
+  @media (max-width: ${({ theme }) => theme.device.md}) {
+    font-weight: normal;
+  }
 `;
 
 export default function Order({ order }) {

@@ -6,7 +6,9 @@ import Order from './Order';
 
 const StyledOrders = styled.div`
   padding: 20px 80px;
-
+  @media (max-width: ${({ theme }) => theme.device.md}) {
+    padding: 20px;
+  }
   > h1 {
     margin: 30px 0;
   }

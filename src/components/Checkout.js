@@ -13,6 +13,16 @@ const StyledCheckout = styled.div`
     flex-direction: column;
     justify-content: center;
   }
+  > div {
+    &:last-child {
+      padding-top: 40px;
+    }
+    > h1 {
+      @media (max-width: ${({ theme }) => theme.device.md}) {
+        font-size: 16px;
+      }
+    }
+  }
 `;
 
 const StyledCheckoutImg = styled.img`

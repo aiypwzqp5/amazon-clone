@@ -9,10 +9,23 @@ const StyledCheckoutProduct = styled.div`
   display: flex;
   margin-top: 20px;
   margin-bottom: 20px;
+  @media (max-width: ${({ theme }) => theme.device.md}) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 35px 0;
+  }
 `;
 
 const StyledCheckoutProductInfo = styled.div`
   padding-left: 20px;
+  @media (max-width: ${({ theme }) => theme.device.md}) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0;
+  }
 `;
 
 const StyledCheckoutProductImage = styled.img`
@@ -24,6 +37,11 @@ const StyledCheckoutProductImage = styled.img`
 const StyledCheckoutProductTitle = styled.p`
   font-size: 17px;
   font-weight: 800;
+  width: 300px;
+  @media (max-width: ${({ theme }) => theme.device.md}) {
+    font-weight: normal;
+    text-align: center;
+  }
 `;
 
 const StyledCheckoutProductRating = styled.div`
