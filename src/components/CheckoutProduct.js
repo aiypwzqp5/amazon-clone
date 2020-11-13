@@ -58,12 +58,8 @@ export default function CheckoutProduct({
         <StyledCheckoutProductRating>
           {Array(rating)
             .fill()
-            .map((_) => (
-              <p
-              // key={i}
-              >
-                🌟
-              </p>
+            .map((_, i) => (
+              <p key={i}>🌟</p>
             ))}
         </StyledCheckoutProductRating>
         {!hideButton && (

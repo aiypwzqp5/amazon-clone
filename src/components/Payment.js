@@ -137,9 +137,9 @@ export default function Payment() {
             <h3>Review items and delivery</h3>
           </StyledPaymentTitle>
           <StyledPaymentItems>
-            {basket.map((item) => (
+            {basket.map((item, i) => (
               <CheckoutProduct
-                // key={i}
+                key={i}
                 id={item.id}
                 title={item.title}
                 image={item.image}

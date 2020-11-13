@@ -30,9 +30,9 @@ export default function Order({ order }) {
       <StyledOrderId>
         <small>{order.id}</small>
       </StyledOrderId>
-      {order.data.basket?.map((item) => (
+      {order.data.basket?.map((item, i) => (
         <CheckoutProduct
-          // key={i}
+          key={i}
           id={item.id}
           title={item.title}
           image={item.image}

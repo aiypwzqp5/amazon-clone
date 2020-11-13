@@ -38,9 +38,9 @@ export default function Checkout() {
         <div>
           <h3>Hello, Guest</h3>
           <StyledCheckoutTitle>Your shopping Basket</StyledCheckoutTitle>
-          {basket?.map((item) => (
+          {basket?.map((item, i) => (
             <CheckoutProduct
-              // key={i}
+              key={i}
               id={item.id}
               title={item.title}
               image={item.image}

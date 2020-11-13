@@ -71,8 +71,8 @@ export default function Product({ id, title, image, price, rating }) {
         <StyledProductRating>
           {Array(rating)
             .fill()
-            .map((_) => (
-              <p>🌟</p>
+            .map((_, i) => (
+              <p key={i}>🌟</p>
             ))}
         </StyledProductRating>
       </StyledProductInfo>
